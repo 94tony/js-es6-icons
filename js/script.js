@@ -96,21 +96,54 @@ const icons = [
 		family: 'fas'
 	}
 ];
-const iconsFiltered = icons.map((element)=>{
-return element;
-})
-const containerHTML = document.querySelector('.icons-content')
-iconsFiltered.forEach((icon)=>{
-    const { name, prefix , family, type} = icon
-    containerHTML.innerHTML+=`
-        <div class="icon-card col">
-            <div class="icon-card-inner">
-              <div class="icon ${type}"> 
-                 <i class="${family} ${prefix}${name}"> </i>
-              </div>  
-                
-                 <div class="name">${name}</div>
+
+
+
+function filterIcons (choice, originalList){
+    return originalList.filter((icon)=>{
+        if(choice ==='all'){
+            return true;
+        }
+        if(choice === icon.type){
+            return true;
+
+        }
+            return false;   
+    })
+}
+
+
+
+function listIconsToHTML(filter){
+    const iconsFiltered= filterIcons(filter,icons);
+    const containerHTML = document.querySelector('.icons-content')
+    containerHTML.innerHTML='';
+
+
+    iconsFiltered.forEach((icon)=>{
+    
+        const { name, prefix , family, type} = icon;
+       
+        containerHTML.innerHTML+=`
+            <div class="icon-card col">
+                <div class="icon-card-inner">
+                  <div class="icon ${type}"> 
+                     <i class="${family} ${prefix}${name}"> </i>
+                  </div>  
+                    
+                     <div class="name">${name}</div>
+                </div>
             </div>
-        </div>
-    `
+        `
+    })
+}
+
+listIconsToHTML('all');
+
+const selectElement= document.querySelector('.type-select')
+
+selectElement.addEventListener('change', (event) =>{
+    listIconsToHTML(event.target.value);
+
 })
+
