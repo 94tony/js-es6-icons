@@ -1,0 +1,44 @@
+.icons-container{
+    background-color: #ddd;
+}
+
+.icon-card{
+    flex-basis: calc(100%/5);
+    max-width: calc(100%/5);  /*da rivedere */
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    
+}
+
+.icon-card-inner{
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 15px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.icon-card-inner .icon{ 
+    width: 100%;
+}
+
+.icon-card-inner .name{
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.icon.animal{
+    color: blue;
+}
+.icon.user{
+    color: purple;
+}
+
+.icon.vegetable{
+    color: orange;
+}
